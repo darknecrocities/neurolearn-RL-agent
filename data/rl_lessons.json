@@ -1,0 +1,69 @@
+{
+ "nodes": [
+  { "id": "brain", "title": "Reinforcement Learning Overview", "description": "The center of decision making and goal-oriented behaviors.", "connections": ["agent", "environment", "reward_signal", "policy_core", "value_fn_core", "model_core"] },
+
+  { "id": "agent", "title": "Agent", "description": "The learner and decision maker. Explores states, chooses actions, and tries to maximize expected long-term rewards.", "connections": ["action_space", "state_representation"] },
+  { "id": "environment", "title": "Environment", "description": "The external system the agent interacts with. Responds to actions by transitioning states and providing objective reward signals.", "connections": ["state_space", "dynamics"] },
+  { "id": "reward_signal", "title": "Reward Signal", "description": "The scalar feedback indicating immediate success. Used mathematically by the agent to define their primary objective.", "connections": ["return", "discounting"] },
+
+  { "id": "policy_core", "title": "Policy Core (\u03c0)", "description": "The behavior formula of the agent at a given time. It formally defines what action should be taken in each given state.", "connections": ["deterministic_policy", "stochastic_policy", "policy_gradient"] },
+  { "id": "value_fn_core", "title": "Value Function", "description": "An estimation of what a state or action is fundamentally worth in terms of long-term discounted future rewards.", "connections": ["state_value", "action_value", "bellman_equation"] },
+  { "id": "model_core", "title": "Model (Optional)", "description": "The agent's internal representation of the environment. Used to predict what the environment will do next for planning.", "connections": ["transition_model", "reward_model", "planning"] },
+
+  { "id": "action_space", "title": "Action Space (A)", "description": "The complete set of choices available. Can be discrete (buttons on a controller) or continuous (steering a wheel).", "connections": ["exploration", "exploitation"] },
+  { "id": "state_space", "title": "State Space (S)", "description": "All possible configurations of the environment. Can be massive or infinite depending on complexity.", "connections": ["mdp", "pomdp"] },
+  
+  { "id": "state_representation", "title": "State Representation", "description": "How the agent practically perceives the environment's state, often via sensors, camera pixels, or structured memory.", "connections": [] },
+  { "id": "dynamics", "title": "Environment Dynamics", "description": "The underlying mathematical rules determining how the state changes in response to actions.", "connections": [] },
+  { "id": "policy_gradient", "title": "Policy Gradient Methods", "description": "Optimizing a parameterized policy directly via gradient ascent on the expected cumulative reward.", "connections": ["reinforce"] },
+  { "id": "state_value", "title": "State Value (V)", "description": "The expected return when starting in state S and following the current policy \u03c0 thereafter.", "connections": [] },
+  { "id": "action_value", "title": "Action Value (Q)", "description": "The expected return when starting in state S, taking action A, and then following the policy \u03c0.", "connections": [] },
+  { "id": "transition_model", "title": "Transition Model", "description": "A predictive model estimating the probability distribution of the next state given a state and action.", "connections": [] },
+  { "id": "reward_model", "title": "Reward Model", "description": "A predictive model estimating the expected immediate reward given a state and an action.", "connections": [] },
+  { "id": "planning", "title": "Planning", "description": "Using models to simulate future scenarios and compute optimal policies without interacting with the real world.", "connections": [] },
+
+  { "id": "exploration", "title": "Exploration", "description": "Trying new, potentially unoptimal actions to gather more information and find better long-term paths.", "connections": ["epsilon_greedy", "ucb", "entropy_bonus"] },
+  { "id": "exploitation", "title": "Exploitation", "description": "Executing known actions with the highest expected reward value according to current knowledge.", "connections": ["epsilon_greedy"] },
+
+  { "id": "deterministic_policy", "title": "Deterministic Policy", "description": "A function that maps each state to exactly one specific action uniquely.", "connections": ["dqn", "ddpg"] },
+  { "id": "stochastic_policy", "title": "Stochastic Policy", "description": "A probability distribution output mapping states to a likelihood over a range of possible actions.", "connections": ["reinforce", "ppo", "sac"] },
+  
+  { "id": "bellman_equation", "title": "Bellman Equation", "description": "The recursive relationship for value functions, decomposing a value into immediate reward plus discounted future value.", "connections": ["dynamic_programming", "temporal_difference"] },
+  { "id": "temporal_difference", "title": "Temporal Difference (TD)", "description": "Learning from incomplete episodes by bootstrapping updates off of other previously estimated values.", "connections": ["q_learning", "sarsa"] },
+
+  { "id": "q_learning", "title": "Q-Learning", "description": "An off-policy TD control algorithm. It directly approximates the optimal action-value function regardless of the policy being followed.", "connections": ["dqn"] },
+  { "id": "dqn", "title": "Deep Q-Network (DQN)", "description": "Using deep neural networks to approximate complex Q-values in massive state spaces. Famously solved Atari games.", "connections": ["experience_replay", "target_network"] },
+
+  { "id": "ppo", "title": "Proximal Policy Optimization", "description": "PPO is the modern standard actor-critic method, preventing dangerously large policy updates using bounds for stability.", "connections": ["actor_critic", "clip_objective"] },
+  { "id": "actor_critic", "title": "Actor-Critic", "description": "An architecture learning both the policy (the actor) and the value function (the critic) simultaneously for stable training.", "connections": ["sac", "ddpg"] },
+
+  { "id": "experience_replay", "title": "Experience Replay", "description": "A technique caching transitions in a buffer memory to be randomly sampled later, breaking strong correlations in training data.", "connections": ["off_policy"] },
+  { "id": "target_network", "title": "Target Network", "description": "Stabilizing neural network training by freezing the target estimates and updating them slowly over time.", "connections": ["off_policy"] },
+
+  { "id": "mdp", "title": "Markov Decision Process (MDP)", "description": "The foundational mathematical framework for modeling fully observable decision making tasks as state transitions.", "connections": ["bellman_equation"] },
+  { "id": "pomdp", "title": "POMDP", "description": "A Partially Observable MDP, describing complicated scenarios where critical state information is hidden from the agent's sensors.", "connections": ["rnn", "belief_state"] },
+  
+  { "id": "dynamic_programming", "title": "Dynamic Programming", "description": "A collection of algorithms solving complex pathing problems iteratively using perfect full environment models.", "connections": ["policy_iteration", "value_iteration"] },
+
+  { "id": "epsilon_greedy", "title": "Epsilon-Greedy Strategy", "description": "The simplest exploration math: take a random exploratory action with probability \u03b5, otherwise exploit the best known action.", "connections": [] },
+  { "id": "ucb", "title": "Upper Confidence Bound (UCB)", "description": "Exploration based on \"optimism in the face of uncertainty,\" statistically favoring states with large uncertainty variance.", "connections": [] },
+  { "id": "entropy_bonus", "title": "Entropy Bonus", "description": "An additive penalty encouraging exploration by mathematically rewarding the policy for taking unpredictable random distributions.", "connections": ["sac"] },
+
+  { "id": "off_policy", "title": "Off-Policy Learning", "description": "Algorithms capable of learning the optimal target policy while simultaneously executing a completely different exploratory behavior policy.", "connections": ["importance_sampling"] },
+  { "id": "on_policy", "title": "On-Policy Learning", "description": "Algorithms that require evaluating and improving the exact same policy that they are currently using to make live decisions.", "connections": ["sarsa", "reinforce"] },
+
+  { "id": "reinforce", "title": "REINFORCE Algorithm", "description": "The classic Monte Carlo policy gradient algorithm, using the complete cumulative reward at the end of an episode to map policy weights.", "connections": ["on_policy"] },
+  { "id": "sarsa", "title": "SARSA", "description": "State-Action-Reward-State-Action: An on-policy TD control method where values are updated using the exact action chosen in the next state.", "connections": ["on_policy"] },
+
+  { "id": "return", "title": "Expected Return", "description": "Calculated as the mathematically discounted total expected accumulated reward obtained over the remaining duration of an episode.", "connections": [] },
+  { "id": "discounting", "title": "Discount Factor (\u03b3)", "description": "A hyperparameter weight determining the importance of future rewards compared to immediate short-term rewards.", "connections": [] },
+  { "id": "sac", "title": "Soft Actor-Critic (SAC)", "description": "An advanced off-policy continuous actor-critic algorithm focused inherently on maximizing expected reward alongside maximum entropy.", "connections": [] },
+  { "id": "ddpg", "title": "DDPG Algorithm", "description": "Deep Deterministic Policy Gradients: An actor-critic algorithm designed specifically for continuous and physical action domains.", "connections": [] },
+  { "id": "rnn", "title": "Recurrent Neural Networks", "description": "A neural architecture used to inherently retain memory, heavily utilized in POMDPs to infer unobservable environment states.", "connections": [] },
+  { "id": "belief_state", "title": "Belief State", "description": "A probabilistic distribution calculation indicating which true mathematical state the agent statistically believes it is residing in.", "connections": [] },
+  { "id": "policy_iteration", "title": "Policy Iteration", "description": "A structural algorithm utilizing alternating steps of evaluating a current policy entirely, then improving it entirely.", "connections": [] },
+  { "id": "value_iteration", "title": "Value Iteration", "description": "Directly updating the value function iteratively to calculate the absolute optimal policy aggressively in single passes.", "connections": [] },
+  { "id": "importance_sampling", "title": "Importance Sampling", "description": "An advanced statistical technique used to properly re-weigh samples scaling probability variables when attempting off-policy learning.", "connections": [] },
+  { "id": "clip_objective", "title": "Clipping Objective", "description": "An objective function used mainly in modern PPO to strictly limit the mathematical size of policy surrogate parameter updates.", "connections": [] }
+ ]
+}

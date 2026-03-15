@@ -1,0 +1,24 @@
+# Virtual Environment
+venv/
+ENV/
+env/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env.bak/
+venv.bak/
+
+# Project Specific
+pip_log.txt
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo

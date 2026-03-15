@@ -1,0 +1,11 @@
+opencv-python
+mediapipe==0.10.14
+numpy
+pygame
+networkx
+torch
+torchvision
+scikit-learn
+matplotlib
+python-dotenv
+PyOpenGL
