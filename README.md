@@ -1,4 +1,4 @@
-# \ud83e\udde0 NeuroLearn Gesture Navigator
+# NeuroLearn Gesture Navigator
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)
 ![OpenGL](https://img.shields.io/badge/OpenGL-PyOpenGL-5586A4?style=for-the-badge&logo=opengl)
@@ -11,7 +11,7 @@ By combining computer vision, machine learning gesture classification, and high-
 
 ---
 
-## \u2728 Features (V4 Hyper-Realism)
+## Features (V4 Hyper-Realism)
 
 This project features a custom-built 3D OpenGL rendering engine designed to mimic living biological tissue:
 
@@ -24,7 +24,7 @@ This project features a custom-built 3D OpenGL rendering engine designed to mimi
 
 ---
 
-## \ud83d\udd79\ufe0f Gesture Controls
+## Gesture Controls
 
 The application uses a custom PyTorch Neural Network and MediaPipe to classify your hand gestures in real-time:
 
@@ -35,7 +35,7 @@ The application uses a custom PyTorch Neural Network and MediaPipe to classify y
 
 ---
 
-## \ud83d\udee0\ufe0f Technology Stack
+## Technology Stack
 
 *   **Computer Vision:** `MediaPipe` (Hand Landmarks), `OpenCV` (Webcam processing)
 *   **Machine Learning:** `PyTorch` (Custom Gesture Classifier), `Scikit-learn` (Preprocessing)
@@ -44,7 +44,7 @@ The application uses a custom PyTorch Neural Network and MediaPipe to classify y
 
 ---
 
-## \ud83d\ude80 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -84,7 +84,7 @@ python app/main.py
 
 ---
 
-## \ud83d\udcc2 Project Structure
+## Project Structure
 
 ```text
 neurolearn-gesture-navigator/
